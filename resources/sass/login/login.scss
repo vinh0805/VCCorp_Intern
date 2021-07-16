@@ -1,0 +1,35 @@
+.login-box {
+    .panel {
+        margin: 20px auto 0 auto;
+        width: 75% !important;
+
+        .panel-body {
+            .row {
+                height: 40px;
+
+                label {
+                    height: 100%;
+                    padding: 10px 0 10px 50px;
+
+                    &.error {
+                        padding: 2px;
+                    }
+                }
+
+                input {
+                    height: 100%;
+                    border: 1px solid lightgrey;
+                }
+            }
+        }
+
+        .panel-footer {
+            padding: 20px;
+        }
+    }
+}
+
+.signup-row {
+    padding-right: 20%;
+    margin-bottom: 40px;
+}

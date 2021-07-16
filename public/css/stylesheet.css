@@ -1,0 +1,424 @@
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #777777;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #263238;
+}
+
+.content-wrapper {
+  padding-bottom: 0;
+}
+
+.content-wrapper .page-header .page-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.content-wrapper .page-content {
+  width: 100%;
+  padding: 20px 20px 0 20px;
+}
+
+.content-wrapper .page-content .datatable-header {
+  padding-top: 10px;
+  height: 56px;
+}
+
+#modal_form_horizontal .modal-dialog {
+  margin: 0 auto;
+}
+
+.show-info-modal .modal-title {
+  font-weight: 700;
+}
+
+.show-info-modal .modal-body .row {
+  height: 30px;
+  font-size: 14px;
+}
+
+.show-info-modal .modal-body .row .col-sm-4 {
+  font-weight: bold;
+}
+
+.dataTables_length {
+  margin: 10px;
+}
+
+.dataTables_filter {
+  margin: 10px;
+}
+
+.datatable-basic {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.dataTables_scrollBody table.datatable-basic.table tbody tr {
+  height: 60px;
+}
+
+.table {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.right-submit-button {
+  float: right;
+}
+
+.bottom-submit-button {
+  width: 100%;
+  padding: 20px 0 50px 0;
+}
+
+.bottom-submit-button .btn-default {
+  margin-right: 20px;
+}
+
+.stepy-navigator {
+  margin-top: 10px;
+  display: inline-block;
+  float: right;
+}
+
+.icons-list li {
+  margin-left: 10px;
+}
+
+#import_form_fields_list2 {
+  margin-left: 1px;
+}
+
+.role-label {
+  padding: 8px 0 20px 10px;
+}
+
+.delete-button {
+  width: 100%;
+  padding: 8px 15px;
+  border: none;
+  background-color: transparent;
+}
+
+.delete-button:hover {
+  background-color: #EEEEEE;
+}
+
+.delete-button i {
+  margin-right: 10px;
+}
+
+label.error {
+  color: red;
+}
+
+.icon-folder-remove:hover {
+  cursor: pointer;
+}
+
+.import-table tr td {
+  min-width: 222px;
+}
+
+.import-table tr td label:hover {
+  cursor: pointer;
+}
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+
+.waiting-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8) url("http://i.stack.imgur.com/FhHRx.gif") 50% 50% no-repeat;
+}
+
+.waiting-modal p {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+
+body.loading .waiting-modal {
+  overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+
+body.loading .waiting-modal {
+  display: block;
+}
+
+.dropdown-menu {
+  z-index: 10000;
+}
+
+#import_form_datatable4 h2 {
+  margin-top: 0;
+}
+
+#import_form_datatable4 p {
+  margin-bottom: 0;
+}
+
+#import_form_datatable4 table {
+  width: 80%;
+  border: 2px solid lightgrey;
+  margin: 20px auto;
+}
+
+.input-sm {
+  width: 100px;
+  height: 22px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.choose-fields-table thead {
+  border-bottom: 3px solid darkgray;
+}
+
+.submit-import-form {
+  display: none;
+}
+
+#export_file_name {
+  margin-bottom: 20px;
+}
+
+.submit-export-form-div {
+  margin-left: 4px;
+  display: inline-block;
+}
+
+.submit-export-form-div2 {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.reload-page-button {
+  display: none;
+  margin-top: 20px;
+  float: right;
+}
+
+#import_table {
+  min-height: 300px;
+}
+
+.search {
+  padding: 0 0 20px 20px;
+}
+
+.search .search-field {
+  width: 200px;
+}
+
+.search .search-value {
+  width: 200px;
+  padding-top: 5px;
+}
+
+.default-role {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+.default-role input {
+  cursor: not-allowed !important;
+}
+
+.datatable-container .dataTables_scroll,
+.datatable-container .dataTables_scrollHeadInner {
+  min-width: 100% !important;
+}
+
+.navbar-avatar {
+  width: 28px;
+  height: 28px;
+}
+
+.hide-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.user-list {
+  max-width: 250px;
+}
+
+.current-avatar {
+  margin-top: 10px;
+}
+
+.pagination {
+  margin-top: 5px;
+}
+
+.modal-full {
+  padding: 0;
+  margin: 0 auto;
+  max-height: 100%;
+}
+
+.import-step-1-row {
+  margin-top: 10px;
+}
+
+legend {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+#select_fields_export {
+  height: 350px;
+  overflow: auto;
+}
+
+.export-modal-dialog {
+  margin: 20px auto;
+}
+
+.modal-lg {
+  margin: 0 auto;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.total-record {
+  margin: 0;
+  font-size: 12px;
+}
+
+.check-confirm {
+  display: none;
+}
+
+.close-modal2 {
+  display: none;
+}
+
+.login-box .panel {
+  margin: 20px auto 0 auto;
+  width: 75% !important;
+}
+
+.login-box .panel .panel-body .row {
+  height: 40px;
+}
+
+.login-box .panel .panel-body .row label {
+  height: 100%;
+  padding: 10px 0 10px 50px;
+}
+
+.login-box .panel .panel-body .row label.error {
+  padding: 2px;
+}
+
+.login-box .panel .panel-body .row input {
+  height: 100%;
+  border: 1px solid lightgrey;
+}
+
+.login-box .panel .panel-footer {
+  padding: 20px;
+}
+
+.signup-row {
+  padding-right: 20%;
+  margin-bottom: 40px;
+}
+
+.gender-label {
+  padding: 0 15px 0 5px;
+}
+
+.product-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+#edit_product_image2 {
+  margin-top: 10px;
+  display: none;
+}
+
+#edit_user_avatar2 {
+  margin-top: 10px;
+  display: none;
+}
+
+.product-label {
+  padding-left: 0;
+}
+
+.select-product-order {
+  padding-left: 4px;
+}
+
+.daterangepicker {
+  z-index: 1100 !important;
+}
+
+.add-product-order-button,
+.add-product-order-button2,
+.sub-product-order-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 7px;
+}
+
+.permission-row {
+  padding: 7px 0 0 2px;
+}
+
+.fa-remove {
+  margin-left: 10px;
+}
+
+.fa-remove:hover {
+  cursor: pointer;
+}
+
+.edit-role-button i.fa-edit {
+  color: black;
+}
+

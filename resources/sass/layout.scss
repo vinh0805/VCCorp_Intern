@@ -1,0 +1,381 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #777777;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #263238;
+}
+
+.content-wrapper {
+    padding-bottom: 0;
+    .page-header {
+        .page-title {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    .page-content {
+        width: 100%;
+        padding: 20px 20px 0 20px;
+
+        .datatable-header {
+            padding-top: 10px;
+            height: 56px;
+        }
+    }
+}
+
+#modal_form_horizontal {
+    .modal-dialog {
+        margin: 0 auto;
+    }
+}
+
+.show-info-modal {
+    .modal-title {
+        font-weight: 700;
+    }
+
+    .modal-body {
+        .row {
+            height: 30px;
+            font-size: 14px;
+
+            .col-sm-4 {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.datatable-footer {
+    //display: none;
+}
+
+.dataTables_length {
+    //display: none;
+    margin: 10px;
+}
+
+.dataTables_filter {
+    margin: 10px;
+}
+
+.datatable-basic {
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
+.dataTables_scrollBody {
+    table.datatable-basic.table {
+        //min-height: 120px;
+        tbody {
+            tr {
+                height: 60px;
+            }
+        }
+    }
+}
+
+//.dataTables_scrollHeadInner {
+//    width: 100% !important;
+//}
+.table {
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+.right-submit-button {
+    float: right;
+}
+
+.bottom-submit-button {
+    width: 100%;
+    padding: 20px 0 50px 0;
+
+    .btn-default {
+        margin-right: 20px;
+    }
+}
+
+.stepy-navigator {
+    margin-top: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.icons-list {
+    li {
+        margin-left: 10px;
+    }
+}
+
+#import_form_fields_list2 {
+    margin-left: 1px;
+}
+
+.role-label {
+    padding: 8px 0 20px 10px;
+}
+
+.delete-button {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+        background-color: #EEEEEE;
+    }
+
+    i {
+        margin-right: 10px;
+    }
+}
+
+label.error {
+    color: red;
+}
+
+.icon-folder-remove:hover {
+    cursor: pointer;
+}
+
+.import-table {
+    tr {
+        td {
+            min-width: 222px;
+
+            label:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// Loading when import
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.waiting-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, .8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+
+    p {
+        margin-top: 30px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .waiting-modal {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .waiting-modal {
+    display: block;
+}
+
+
+.dropdown-menu {
+    z-index: 10000;
+}
+
+#import_form_datatable4 {
+    h2 {
+        margin-top: 0;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    table {
+        width: 80%;
+        border: 2px solid lightgrey;
+        margin: 20px auto;
+    }
+}
+
+.input-sm {
+    width: 100px;
+    height: 22px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.choose-fields-table {
+    thead {
+        border-bottom: 3px solid darkgray;
+    }
+}
+
+.submit-import-form {
+    display: none;
+}
+
+#export_file_name {
+    margin-bottom: 20px;
+}
+
+.submit-export-form-div {
+    margin-left: 4px;
+    display: inline-block;
+}
+.submit-export-form-div2 {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.reload-page-button {
+    display: none;
+    margin-top: 20px;
+    float: right;
+}
+
+#import_table {
+    min-height: 300px;
+}
+
+.search {
+    padding: 0 0 20px 20px;
+
+    .search-field {
+        width: 200px;
+    }
+
+    .search-value {
+        width: 200px;
+        padding-top: 5px;
+    }
+}
+
+.default-role {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+
+    input {
+        cursor: not-allowed !important;
+    }
+}
+
+.datatable-container {
+    .dataTables_scroll, .dataTables_scrollHeadInner {
+        min-width: 100% !important;
+    }
+}
+
+.navbar-avatar {
+    width: 28px;
+    height: 28px;
+}
+
+.hide-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user-list {
+    max-width: 250px;
+}
+
+.current-avatar {
+    margin-top: 10px;
+}
+
+.pagination {
+    margin-top: 5px;
+}
+
+// Import modal
+.modal-full {
+    padding: 0;
+    margin: 0 auto;
+    max-height: 100%;
+
+    //.modal-content {
+    //    max-height: 100%;
+    //    overflow: scroll;
+    //}
+}
+.import-step-1-row {
+    margin-top: 10px;
+}
+
+// Role
+legend {
+    margin-bottom: 0;
+}
+h3 {
+    margin-top: 10px;
+}
+
+//.role-table {
+//    thead {
+//        width: 100%;
+//    }
+//    display: block;
+//    width: 100%;
+//
+//    .tbody-role-table {
+//        //display: block;
+//        width: 100%;
+//        max-height: 400px;
+//        overflow: scroll;
+//    }
+//}
+
+// Export
+#select_fields_export {
+    height: 350px;
+    overflow: auto;
+}
+
+.export-modal-dialog {
+    margin: 20px auto;
+}
+
+.modal-lg {
+    margin: 0 auto;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.total-record {
+    margin: 0;
+    font-size: 12px;
+}
+
+.check-confirm {
+    display: none;
+}
+
+.close-modal2 {
+    display: none;
+}

@@ -1,0 +1,17 @@
+.permission-row {
+    padding: 7px 0 0 2px;
+}
+
+.fa-remove {
+    margin-left: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.edit-role-button {
+    i.fa-edit {
+        color: black;
+    }
+}

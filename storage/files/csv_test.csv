@@ -1,0 +1,5 @@
+﻿"Customer ID",Name,Age,Gender,Job,Address,Email,Phone,User_id,Company_id,Status
+1,"Khách hàng 01",58,Nam,"Nhân viên ngân hàng","Hà Nội",kh01@gmail.com,0123123001,60ab24dc709e7a9105292e9c,60af41bb05120000bb0069dc,"Đang hoạt động",
+2,"Khách hàng 02",43,Nữ,"Quản lý khách sạn","Hà Nội",kh02@gmail.com,0123123002,60ab24dc709e7a9105292e9c,,"Không hoạt động",
+5,"Khách hàng 05",44,Nam,"Kinh doanh tự do","Bắc Ninh",kh05@gmail.com,0123123005,60ab24dc709e7a9105292e9c,,,"2021-05-27 03:58:04"
+6,"Khách hàng 06",55,Nam,"Quản lý khách sạn","Hà Nội",kh06@gmail.com,0123123006,60ab24dc709e7a9105292e9c,60b0ac7a34610000f2003cf7,"Đang hoạt động","2021-05-28 08:41:38"
