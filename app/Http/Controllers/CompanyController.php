@@ -147,10 +147,10 @@ class CompanyController extends Controller
                 }
                 try {
                     $allCompanies = Company::query()
-                        ->where('name', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('field', 'regexp', '/'. $search_value . '/')
+                        ->where('name', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('field', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('email.hashed', '=', md5($search_value))
                         ->orWhere('phone.hashed', '=', md5($search_value))
                         ->orWhere('created_at', $time)
@@ -166,7 +166,7 @@ class CompanyController extends Controller
                 }
             } else {
                 $allCompanies = Company::query()
-                    ->where($search_field, 'regexp', '/'. $search_value . '/')
+                    ->where($search_field, 'regexp', '/'. $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
@@ -199,10 +199,10 @@ class CompanyController extends Controller
                 try {
                     $allCompanies = Company::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('field', 'regexp', '/'. $search_value . '/')
+                        ->where('name', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('field', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('email.hashed', '=', md5($search_value))
                         ->orWhere('phone.hashed', '=', md5($search_value))
                         ->orWhere('created_at', $time)
@@ -219,7 +219,7 @@ class CompanyController extends Controller
             } else {
                 $allCompanies = Company::query()
                     ->where('user_id', 'all', [$currentUser->_id])
-                    ->where($search_field, 'like', '%' . $search_value . '%')
+                    ->where($search_field, 'regexp', '/'. $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }

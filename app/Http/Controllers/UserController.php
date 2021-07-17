@@ -336,8 +336,7 @@ class UserController extends Controller
         if ($search_field == 'id') {
             try {
                 $search_value += 0;
-            } catch (Exception $e) {
-            }
+            } catch (Exception $e) {}
             $allUsers = User::query()
                 ->where($search_field, $search_value)
                 ->orderBy('id', 'desc')
@@ -357,8 +356,8 @@ class UserController extends Controller
                     $admin = "-1";
                 }
                 $allUsers = User::query()
-                    ->where('name', 'regexp', '/' . $search_value . '/')
-                    ->orWhere('gender', 'regexp', '/' . $search_value . '/')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
+                    ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
                     ->orWhere('email.hashed', md5($search_value))
                     ->orWhere('phone.hashed', md5($search_value))
                     ->orWhere('status', $search_value)
@@ -372,7 +371,7 @@ class UserController extends Controller
             }
         } else {
             $allUsers = User::query()
-                ->where($search_field, 'regexp', '/' . $search_value . '/')
+                ->where($search_field, 'regexp', '/' . $search_value . '/i')
                 ->orderBy('id', 'desc')
                 ->paginate(10);
         }
