@@ -4,13 +4,13 @@
     <div class="content-wrapper">
 
         <!-- Page header -->
-{{--        <div class="page-header">--}}
-{{--            <div class="page-header-content">--}}
-{{--                <div class="page-title">--}}
-{{--                    <h4><b>Danh sách khách hàng</b></h4>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        {{--        <div class="page-header">--}}
+        {{--            <div class="page-header-content">--}}
+        {{--                <div class="page-title">--}}
+        {{--                    <h4><b>Danh sách khách hàng</b></h4>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
         <div class="page-content display-block">
             <!-- Basic datatable -->
             <div class="panel panel-flat">
@@ -21,7 +21,8 @@
                         <ul class="icons-list">
                             @if(isset($permissionList) && in_array('create', $permissionList))
                                 <li>
-                                    <a href="#" data-toggle="modal" class="check-form-change" data-target="#add_customer_modal">
+                                    <a href="#" data-toggle="modal" class="check-form-change"
+                                       data-target="#add_customer_modal">
                                         <i class="icon-add" title="Thêm khách hàng mới"></i>
                                     </a>
                                 </li>
@@ -36,7 +37,8 @@
                             @endif
                             @if(isset($permissionList) && (in_array('export', $permissionList) || in_array('export_all', $permissionList)))
                                 <li>
-                                    <a href="javascript:void(0)" class="export-button check-form-change" data-collection="customer"
+                                    <a href="javascript:void(0)" class="export-button check-form-change"
+                                       data-collection="customer"
                                        data-toggle="modal" data-target="#export_modal">
                                         <i class="icon-database-export" title="Xuất dữ liệu khách hàng"></i>
                                     </a>
@@ -105,7 +107,8 @@
                             <tbody>
                             @foreach($allCustomers as $key => $customer)
                                 <tr>
-                                    <td><input type="checkbox" class="styled check-one" data-id="{{$customer->_id}}"></td>
+                                    <td><input type="checkbox" class="styled check-one" data-id="{{$customer->_id}}">
+                                    </td>
                                     <td>{{ ($allCustomers->currentPage() - 1)*10 + $key + 1}}</td>
                                     <td>{{$customer->name}}</td>
                                     <td>{{$customer->birth}}</td>
@@ -122,7 +125,8 @@
                                         </a>
                                     </td>
                                     <td class="user-list">
-                                        <p @if(strlen($customer['userName']) > 50) class="hide-overflow" title="{{$customer['userName']}}" @endif>
+                                        <p @if(strlen($customer['userName']) > 50) class="hide-overflow"
+                                           title="{{$customer['userName']}}" @endif>
                                             {{$customer->userName}}
                                         </p>
                                     </td>
@@ -150,7 +154,8 @@
                                                             <li>
                                                                 <a href="#"
                                                                    class="edit-customer-button check-form-change"
-                                                                   data-id="{{$customer->_id}}">
+                                                                   data-id="{{$customer->_id}}"
+                                                                   data-target="#edit_customer_modal">
                                                                     <i class="icon-pencil"></i> Sửa thông tin
                                                                 </a>
                                                             </li>
@@ -208,7 +213,7 @@
                       class="form-horizontal add-form validate-form" method="post" id="add_customer_form">
                     @csrf
 
-                    <input type="text"class="form-control check-confirm" name="confirm" value="0">
+                    <input type="text" class="form-control check-confirm" name="confirm" value="0">
 
                     <div class="modal-body">
                         <div class="form-group">

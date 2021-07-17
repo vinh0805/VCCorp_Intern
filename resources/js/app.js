@@ -1,3 +1,4 @@
+require('./01_variable');
 require('./layout');
 require('./customer');
 require('./company');

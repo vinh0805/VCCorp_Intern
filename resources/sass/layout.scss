@@ -379,3 +379,28 @@ h3 {
 .close-modal2 {
     display: none;
 }
+
+.select2-container-multi {
+    height: 36px;
+
+    .select2-choices {
+        height: 100%;
+        padding: 0;
+
+        input.select2-input {
+            margin: 0;
+        }
+
+        li.select2-search-choice {
+            padding: 2px 0 2px 2px;
+            margin: 0;
+            height: 100%;
+
+            div {
+                height: 100%;
+                padding: 5px 30px 7px 12px;
+            }
+        }
+    }
+
+}
