@@ -137,8 +137,8 @@ class ProductController extends Controller
                 }
                 try {
                     $allProducts = Product::query()
-                        ->where('name', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/')
+                        ->where('name', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('price', $search_value)
                         ->orWhere('remain', $search_value)
                         ->orWhere('created_at', $time)
@@ -154,7 +154,7 @@ class ProductController extends Controller
                 }
             } else {
                 $allProducts = Product::query()
-                    ->where($search_field, 'regexp', '/'. $search_value . '/')
+                    ->where($search_field, 'regexp', '/'. $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
@@ -186,8 +186,8 @@ class ProductController extends Controller
                 try {
                     $allProducts = Product::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/')
+                        ->where('name', 'regexp', '/'. $search_value . '/i')
+                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('price', $search_value)
                         ->orWhere('remain', $search_value)
                         ->orWhere('created_at', $time)
@@ -204,7 +204,7 @@ class ProductController extends Controller
             } else {
                 $allProducts = Product::query()
                     ->where('user_id', 'all', [$currentUser->_id])
-                    ->where($search_field, 'regexp', '/'. $search_value . '/')
+                    ->where($search_field, 'regexp', '/'. $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }

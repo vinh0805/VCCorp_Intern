@@ -208,7 +208,7 @@ class OrderController extends Controller
                     ->paginate(10);
             } elseif ($search_field == 'customer_id') {
                 $customers = Customer::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($customers) > 0) {
                     $customerIdArray = [];
@@ -224,7 +224,7 @@ class OrderController extends Controller
                 }
             } elseif ($search_field == 'company_id') {
                 $companies = Company::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($companies) > 0) {
                     $companyIdArray = [];
@@ -251,7 +251,7 @@ class OrderController extends Controller
                     ->paginate(10);
             } elseif ($search_field == null) {
                 $customers = Customer::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($customers) > 0) {
                     $customerIdArray = [];
@@ -262,7 +262,7 @@ class OrderController extends Controller
                     $customerIdArray = [-1];
                 }
                 $companies = Company::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($companies) > 0) {
                     $companyIdArray = [];
@@ -281,11 +281,11 @@ class OrderController extends Controller
                     $allOrders = Order::query()
                         ->where(['customer_id' => ['$in' => $customerIdArray]])
                         ->orWhere(['company_id' => ['$in' => $companyIdArray]])
-                        ->orWhere('time', 'regexp', '/'. $search_value . '/')
+                        ->orWhere('time', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('price', $search_value)
                         ->orWhere('tax', $search_value)
                         ->orWhere('total_price', $search_value)
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/')
+                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
                         ->orWhere('created_at', $time)
                         ->orWhere('updated_at', $time)
                         ->orWhere('status', $search_value)
@@ -298,7 +298,7 @@ class OrderController extends Controller
                 }
             } else {
                 $allOrders = Order::query()
-                    ->where($search_field, 'like', '%' . $search_value . '%')
+                    ->where($search_field, 'regexp', '/' . $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
@@ -314,7 +314,7 @@ class OrderController extends Controller
                     ->paginate(10);
             } elseif ($search_field == 'customer_id') {
                 $customers = Customer::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($customers) > 0) {
                     $customerIdArray = [];
@@ -331,7 +331,7 @@ class OrderController extends Controller
                 }
             } elseif ($search_field == 'company_id') {
                 $companies = Company::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($companies) > 0) {
                     $companyIdArray = [];
@@ -357,7 +357,7 @@ class OrderController extends Controller
                     ->paginate(10);
             } elseif ($search_field == null) {
                 $customers = Customer::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($customers) > 0) {
                     $customerIdArray = [];
@@ -368,7 +368,7 @@ class OrderController extends Controller
                     $customerIdArray = [-1];
                 }
                 $companies = Company::query()
-                    ->where('name', 'like', '%' . $search_value . '%')
+                    ->where('name', 'regexp', '/' . $search_value . '/i')
                     ->get(['_id']);
                 if (count($companies) > 0) {
                     $companyIdArray = [];

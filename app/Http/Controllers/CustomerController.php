@@ -178,11 +178,11 @@ class CustomerController extends Controller
                 }
                 try {
                     $allCustomers = Customer::query()
-                        ->where('name', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('birth', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('gender', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('job', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('address', 'regexp', '/' . $search_value . '/')
+                        ->where('name', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('birth', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('job', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('address', 'regexp', '/' . $search_value . '/i')
                         ->orWhere('email.hashed', '=', md5($search_value))
                         ->orWhere('phone.hashed', '=', md5($search_value))
                         ->orWhere('created_at', $time)
@@ -198,7 +198,7 @@ class CustomerController extends Controller
                 }
             } else {
                 $allCustomers = Customer::query()
-                    ->where($search_field, 'regexp', '/' . $search_value . '/')
+                    ->where($search_field, 'regexp', '/' . $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
@@ -233,11 +233,11 @@ class CustomerController extends Controller
                 try {
                     $allCustomers = Customer::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('birth', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('gender', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('job', 'regexp', '/' . $search_value . '/')
-                        ->orWhere('address', 'regexp', '/' . $search_value . '/')
+                        ->where('name', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('birth', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('job', 'regexp', '/' . $search_value . '/i')
+                        ->orWhere('address', 'regexp', '/' . $search_value . '/i')
                         ->orWhere('email.hashed', '=', md5($search_value))
                         ->orWhere('phone.hashed', '=', md5($search_value))
                         ->orWhere('created_at', $time)
