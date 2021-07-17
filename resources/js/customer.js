@@ -32,72 +32,11 @@ $("body").on('click', '.edit-customer-button', function () {
                 $('#edit_customer_user').select2("val", response.user_id);
                 $('#edit_customer_status').select2("val", response.status);
 
-                edit_form.data('changed', 0);
-                $("form :input").change(function () {
-                    $(this).closest('form').data('changed', 1);
-                });
+                old_state_form = new_state_form = edit_form.serialize();
 
-                // $('.validate-form2').validate({
-                //     ignore: [],
-                //     rules: {
-                //         name: {
-                //             required: true,
-                //             minlength: 3,
-                //             maxlength: 50,
-                //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-                //         },
-                //         email: {
-                //             maxlength: 50,
-                //             email: true,
-                //             required: true
-                //         },
-                //         phone: {
-                //             regex: /^([0][1-9]{2} [0-9]{3} [0-9]{4}||'')$/
-                //         },
-                //         address: {
-                //             minlength: 3,
-                //             maxlength: 100,
-                //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ \-,\s]+)$/i
-                //         },
-                //         field: {
-                //             minlength: 3,
-                //             maxlength: 50,
-                //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-                //         },
-                //         job: {
-                //             minlength: 3,
-                //             maxlength: 50,
-                //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-                //         },
-                //         birth: {
-                //             number: true,
-                //             min: 1900,
-                //             max: 2021
-                //         },
-                //         tax: {
-                //             number: true,
-                //             min: 0,
-                //             max: 1000
-                //         },
-                //         product: {
-                //             required: true
-                //         },
-                //         number: {
-                //             number: true,
-                //             min: 1
-                //         },
-                //         price: {
-                //             required: true,
-                //             number: true,
-                //             min: 1000
-                //         },
-                //         remain: {
-                //             required: true,
-                //             number: true,
-                //             min: 1
-                //         }
-                //     }
-                // })
+                edit_form.change(function () {
+                    new_state_form = $(this).closest('form').serialize();
+                });
             }
         }
     })

@@ -86,6 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./resources/js/01_variable.js":
+/*!*************************************!*\
+  !*** ./resources/js/01_variable.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var table = null;
+var table2 = null;
+var submitted = false;
+var default_fields = [];
+var new_fields = [];
+var old_fields = [];
+var base_path = $("#url").val();
+var validate_form = null;
+var old_state_form = null;
+var new_state_form = null;
+
+/***/ }),
+
 /***/ "./resources/js/admin.js":
 /*!*******************************!*\
   !*** ./resources/js/admin.js ***!
@@ -190,6 +210,8 @@ $('.user-table').dataTable({
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./01_variable */ "./resources/js/01_variable.js");
 
 __webpack_require__(/*! ./layout */ "./resources/js/layout.js");
 
@@ -315,70 +337,10 @@ $("body").on('click', '.edit-customer-button', function () {
         $('#edit_customer_company').select2("val", response.company_id);
         $('#edit_customer_user').select2("val", response.user_id);
         $('#edit_customer_status').select2("val", response.status);
-        edit_form.data('changed', 0);
-        $("form :input").change(function () {
-          $(this).closest('form').data('changed', 1);
-        }); // $('.validate-form2').validate({
-        //     ignore: [],
-        //     rules: {
-        //         name: {
-        //             required: true,
-        //             minlength: 3,
-        //             maxlength: 50,
-        //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-        //         },
-        //         email: {
-        //             maxlength: 50,
-        //             email: true,
-        //             required: true
-        //         },
-        //         phone: {
-        //             regex: /^([0][1-9]{2} [0-9]{3} [0-9]{4}||'')$/
-        //         },
-        //         address: {
-        //             minlength: 3,
-        //             maxlength: 100,
-        //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ \-,\s]+)$/i
-        //         },
-        //         field: {
-        //             minlength: 3,
-        //             maxlength: 50,
-        //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-        //         },
-        //         job: {
-        //             minlength: 3,
-        //             maxlength: 50,
-        //             regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
-        //         },
-        //         birth: {
-        //             number: true,
-        //             min: 1900,
-        //             max: 2021
-        //         },
-        //         tax: {
-        //             number: true,
-        //             min: 0,
-        //             max: 1000
-        //         },
-        //         product: {
-        //             required: true
-        //         },
-        //         number: {
-        //             number: true,
-        //             min: 1
-        //         },
-        //         price: {
-        //             required: true,
-        //             number: true,
-        //             min: 1000
-        //         },
-        //         remain: {
-        //             required: true,
-        //             number: true,
-        //             min: 1
-        //         }
-        //     }
-        // })
+        old_state_form = new_state_form = edit_form.serialize();
+        edit_form.change(function () {
+          new_state_form = $(this).closest('form').serialize();
+        });
       }
     }
   });
@@ -555,14 +517,6 @@ var a = $('.customer-table').DataTable({
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var table = null;
-var table2 = null;
-var submitted = false;
-var default_fields = [];
-var new_fields = [];
-var old_fields = [];
-var base_path = $("#url").val();
-var validate_form = null;
 var body = $('body');
 $('.modal').on('hidden.bs.modal', function () {
   $(this).find('form').trigger('reset');
@@ -669,22 +623,25 @@ body.on('click', '.customer-modal', function () {
   $('#customer_phone_modal').text($customer['phone']);
   $('#customer_company_modal').text($customer['company_name']);
   $('#customer_status_modal').text($customer['status']);
-}); // Confirm when close add modal
+}); // Confirm when close add/edit modal
 
 $('.check-form-change').click(function () {
-  $("form :input").change(function () {
-    $(this).closest('form').data('changed', 1);
+  var form = $($(this).data('target')).find('form');
+  old_state_form = form.serialize();
+  form.change(function () {
+    new_state_form = $(this).closest('form').serialize();
   });
+  new_state_form = null;
 });
 $('.close-modal').click(function () {
-  var form = $(this).parent().siblings('form').is('form') ? $(this).parent().siblings('form') : $(this).closest('form');
-
-  if (form.data('changed')) {
+  if (old_state_form !== new_state_form && new_state_form != null) {
     if (confirm('Lưu ý: dữ liệu bạn nhập sẽ không được lưu.\nBạn có chắc chắn muốn đóng không?')) {
       $('button.close-modal2').click();
+      new_state_form = null;
     }
   } else {
     $('button.close-modal2').click();
+    new_state_form = null;
   }
 }); // Select2
 
@@ -842,8 +799,6 @@ body.on('click', '.delete-button', function () {
 body.on('click', '.delete-all-button', function () {
   var collection = $(this).data('collection');
 
-  var _id = $(this).data('id');
-
   if (selectedList.length < 1) {
     return alert('Chưa chọn bản ghi nào!');
   }
@@ -898,7 +853,6 @@ body.on('hidden.bs.modal', function () {
   $('.daterange-single').daterangepicker({
     singleDatePicker: true
   }).val('');
-  $('form').data('changed', 0);
   validate_form.resetForm();
 });
 $(document).ready(function () {

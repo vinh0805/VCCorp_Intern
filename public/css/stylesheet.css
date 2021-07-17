@@ -333,6 +333,30 @@ h3 {
   display: none;
 }
 
+.select2-container-multi {
+  height: 36px;
+}
+
+.select2-container-multi .select2-choices {
+  height: 100%;
+  padding: 0;
+}
+
+.select2-container-multi .select2-choices input.select2-input {
+  margin: 0;
+}
+
+.select2-container-multi .select2-choices li.select2-search-choice {
+  padding: 2px 0 2px 2px;
+  margin: 0;
+  height: 100%;
+}
+
+.select2-container-multi .select2-choices li.select2-search-choice div {
+  height: 100%;
+  padding: 5px 30px 7px 12px;
+}
+
 .login-box .panel {
   margin: 20px auto 0 auto;
   width: 75% !important;

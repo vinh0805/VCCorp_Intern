@@ -1,12 +1,3 @@
-let table = null;
-let table2 = null;
-let submitted = false;
-let default_fields = [];
-let new_fields = [];
-let old_fields = [];
-let base_path = $("#url").val();
-let validate_form = null;
-
 let body = $('body');
 $('.modal').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset');
@@ -126,22 +117,25 @@ body.on('click', '.customer-modal', function () {
     $('#customer_status_modal').text($customer['status']);
 })
 
-// Confirm when close add modal
+// Confirm when close add/edit modal
 $('.check-form-change').click(function () {
-    $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+    let form = $($(this).data('target')).find('form');
+    old_state_form = form.serialize();
+
+    form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
     });
+    new_state_form = null;
 })
 $('.close-modal').click(function () {
-    let form = $(this).parent().siblings('form').is('form') ?
-        $(this).parent().siblings('form') : $(this).closest('form');
-
-    if (form.data('changed')) {
+    if (old_state_form !== new_state_form && new_state_form != null) {
         if (confirm('Lưu ý: dữ liệu bạn nhập sẽ không được lưu.\nBạn có chắc chắn muốn đóng không?')) {
             $('button.close-modal2').click();
+            new_state_form = null;
         }
     } else {
         $('button.close-modal2').click();
+        new_state_form = null;
     }
 })
 
@@ -295,7 +289,6 @@ body.on('click', '.delete-button', function () {
 // Delete all
 body.on('click', '.delete-all-button', function () {
     let collection = $(this).data('collection');
-    let _id = $(this).data('id');
     if (selectedList.length < 1) {
         return alert('Chưa chọn bản ghi nào!');
     }
@@ -354,7 +347,6 @@ body.on('hidden.bs.modal', function () {
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
     }).val('');
-    $('form').data('changed', 0);
     validate_form.resetForm();
 });
 
