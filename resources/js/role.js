@@ -32,7 +32,8 @@ $("body").on('click', '.edit-role-button', function () {
                 alert(response.message)
             } else {
                 let url = 'role/save/' + response._id;
-                $('#edit_role_form').attr('action', url);
+                let edit_form = $('#edit_role_form');
+                edit_form.attr('action', url);
                 $('#edit_role_name').val(response.name);
 
                 $('.edit-permission').each(function () {
@@ -43,6 +44,12 @@ $("body").on('click', '.edit-role-button', function () {
                         radioClass: 'choice'
                     });
                 })
+
+                old_state_form = new_state_form = edit_form.serialize();
+
+                edit_form.change(function () {
+                    new_state_form = $(this).closest('form').serialize();
+                });
             }
         }
     })

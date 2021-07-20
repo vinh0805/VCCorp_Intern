@@ -20,8 +20,8 @@
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#add_role_modal">
-                                    Thêm nhóm quyền
+                                <a href="#" data-toggle="modal" data-target="#add_role_modal" class="check-form-change"
+                                   title="Thêm nhóm quyền">
                                     <i class="icon-add"></i>
                                 </a>
                             </li>
@@ -238,7 +238,7 @@
 
 
                     <div class="modal-footer">
-                                                <button type="button" class="btn btn-link close-modal2" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-link close-modal2" data-dismiss="modal">Đóng</button>
                         <button type="button" class="btn btn-link close-modal">Đóng</button>
 
                         <button type="submit" class="btn btn-primary">Thêm nhóm quyền mới</button>
@@ -338,7 +338,7 @@
 
 
                     <div class="modal-footer">
-                                                <button type="button" class="btn btn-link close-modal2" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-link close-modal2" data-dismiss="modal">Đóng</button>
                         <button type="button" class="btn btn-link close-modal">Đóng</button>
 
                         <button type="submit" class="btn btn-primary">Sửa thông tin nhóm quyền</button>

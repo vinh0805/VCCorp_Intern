@@ -24,9 +24,10 @@ $("body").on('click', ".edit-product-button", function () {
             $('#edit_product_user').select2("val", response.user_id);
             $('#edit_product_status').select2("val", response.status);
 
-            edit_form.data('changed', 0);
-            $("form :input").change(function () {
-                $(this).closest('form').data('changed', 1);
+            old_state_form = new_state_form = edit_form.serialize();
+
+            edit_form.change(function () {
+                new_state_form = $(this).closest('form').serialize();
             });
 
         }

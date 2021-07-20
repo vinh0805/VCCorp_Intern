@@ -149,9 +149,9 @@ $(".admin-edit-user-button").click(function () {
       $('#edit_user_role_order').select2("val", response.role_id.order);
       $('#edit_user_role_company').select2("val", response.role_id.company);
       $('#edit_user_role_product').select2("val", response.role_id.product);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -258,9 +258,9 @@ $("body").on('click', '.edit-company-button', function () {
       }
 
       $('#edit_company_status').select2("val", response.status);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -634,7 +634,7 @@ $('.check-form-change').click(function () {
   new_state_form = null;
 });
 $('.close-modal').click(function () {
-  if (old_state_form !== new_state_form && new_state_form != null) {
+  if (old_state_form && old_state_form !== new_state_form && new_state_form != null) {
     if (confirm('Lưu ý: dữ liệu bạn nhập sẽ không được lưu.\nBạn có chắc chắn muốn đóng không?')) {
       $('button.close-modal2').click();
       new_state_form = null;
@@ -1447,7 +1447,42 @@ body.on('click', '.check-one-export', function () {
       check_all.click();
     }
   }
-});
+}); // let table_body = $('.dataTables_scrollBody');
+// let table = $('.table')
+// table.on('show.bs.dropdown', function () {
+//     table_body.css("overflow", "inherit");
+// });
+//
+// table.on('hide.bs.dropdown', function () {
+//     table_body.css("overflow", "auto");
+// })
+// drop down in responsive table
+
+(function () {
+  // hold onto the drop down menu
+  var dropdownMenu; // and when you show it, move it to the body
+
+  $(window).on('show.bs.dropdown', function (e) {
+    // grab the menu
+    dropdownMenu = $(e.target).find('.dropdown-menu'); // detach it and append it to the body
+
+    $('body').append(dropdownMenu.detach()); // grab the new offset position
+
+    var eOffset = $(e.target).offset(); // make sure to place it where it would normally go (this could be improved)
+
+    dropdownMenu.css({
+      'display': 'block',
+      'top': eOffset.top + $(e.target).outerHeight(),
+      'left': eOffset.left - 100,
+      'right': 20
+    });
+  }); // and when you hide it, reattach the drop down, and hide it normally
+
+  $(window).on('hide.bs.dropdown', function (e) {
+    $(e.target).append(dropdownMenu.detach());
+    dropdownMenu.hide();
+  });
+})();
 
 /***/ }),
 
@@ -1511,13 +1546,14 @@ $("body").on('click', '.edit-order-button', function () {
         }
 
         $("select.select-search").select2();
-        edit_form.data('changed', 0);
-        $("form :input").change(function () {
-          $(this).closest('form').data('changed', 1);
-        });
       } else {
         $("#edit_product_list2").html("");
       }
+
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
+      });
     }
   });
 });
@@ -1796,9 +1832,9 @@ $("body").on('click', ".edit-product-button", function () {
       $('#edit_product_image').prop('placeholder', response.image);
       $('#edit_product_user').select2("val", response.user_id);
       $('#edit_product_status').select2("val", response.status);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -1981,7 +2017,8 @@ $("body").on('click', '.edit-role-button', function () {
         alert(response.message);
       } else {
         var url = 'role/save/' + response._id;
-        $('#edit_role_form').attr('action', url);
+        var edit_form = $('#edit_role_form');
+        edit_form.attr('action', url);
         $('#edit_role_name').val(response.name);
         $('.edit-permission').each(function () {
           if (response.permission_list.includes($(this).data('role'))) {
@@ -1991,6 +2028,10 @@ $("body").on('click', '.edit-role-button', function () {
           $(".styled").uniform({
             radioClass: 'choice'
           });
+        });
+        old_state_form = new_state_form = edit_form.serialize();
+        edit_form.change(function () {
+          new_state_form = $(this).closest('form').serialize();
         });
       }
     }

@@ -78,14 +78,16 @@ $("body").on('click', '.edit-order-button', function () {
                 }
                 $("select.select-search").select2();
 
-                edit_form.data('changed', 0);
-                $("form :input").change(function () {
-                    $(this).closest('form').data('changed', 1);
-                });
-
             } else {
                 $("#edit_product_list2").html("");
             }
+
+            old_state_form = new_state_form = edit_form.serialize();
+
+            edit_form.change(function () {
+                new_state_form = $(this).closest('form').serialize();
+            });
+
         }
     })
 });

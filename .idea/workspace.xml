@@ -23,15 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8ab5fe8-e9b8-4fcd-8842-6c03923ea945" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/01_variable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/company.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/company.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/role.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/role.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/layout.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/customers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/customers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/roles/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/roles/roles.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,17 +201,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\app\Models" />
+      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\admin" />
+      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\login" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\company" />
       <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\customer" />
       <recent name="C:\xampp\htdocs\VCCorp\salesManagement\app\Models" />
       <recent name="C:\xampp\htdocs\VCCorp\salesManagement\app\Imports" />
       <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\import" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\app\Models" />
-      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\admin" />
-      <recent name="C:\xampp\htdocs\VCCorp\salesManagement\resources\views\login" />
     </key>
   </component>
   <component name="RunManager">
@@ -291,6 +298,8 @@
       <workItem from="1626320116418" duration="26493000" />
       <workItem from="1626401638537" duration="7987000" />
       <workItem from="1626487928336" duration="8054000" />
+      <workItem from="1626497748927" duration="30000" />
+      <workItem from="1626752660954" duration="6027000" />
     </task>
     <servers />
   </component>
@@ -346,18 +355,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="336" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1626160795702" />
-    <state x="144" y="0" width="628" height="728" key="find.popup" timestamp="1626494026799">
+    <state x="144" y="0" width="628" height="728" key="find.popup" timestamp="1626763922295">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="144" y="0" width="628" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1626494026799" />
+    <state x="144" y="0" width="628" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1626763922295" />
     <state x="347" y="176" key="run.anything.popup" timestamp="1626332098054">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="347" y="176" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1626332098054" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1626492131518">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1626756916079">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1626492131518" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1626756916079" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

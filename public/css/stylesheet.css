@@ -279,6 +279,10 @@ body.loading .waiting-modal {
   max-width: 250px;
 }
 
+.user-list p {
+  margin: 0;
+}
+
 .current-avatar {
   margin-top: 10px;
 }
