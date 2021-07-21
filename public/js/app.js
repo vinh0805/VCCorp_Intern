@@ -519,6 +519,7 @@ var a = $('.customer-table').DataTable({
 /***/ (function(module, exports) {
 
 var body = $('body');
+base_path = $('#url').val();
 $('.modal').on('hidden.bs.modal', function () {
   $(this).find('form').trigger('reset');
   $('.stepy-navigator').show();

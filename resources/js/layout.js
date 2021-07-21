@@ -1,4 +1,5 @@
 let body = $('body');
+base_path = $('#url').val();
 $('.modal').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset');
     $('.stepy-navigator').show();
