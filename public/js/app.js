@@ -319,7 +319,8 @@ $("body").on('click', '.edit-customer-button', function () {
         edit_form.attr('action', url2);
         $('#edit_customer_name').val(response.name);
         $('#edit_customer_birth').daterangepicker({
-          singleDatePicker: true
+          singleDatePicker: true,
+          maxDate: new Date()
         }).val(response.birth);
 
         if (response.gender === "Nam") {
@@ -518,6 +519,7 @@ var a = $('.customer-table').DataTable({
 /***/ (function(module, exports) {
 
 var body = $('body');
+base_path = $('#url').val();
 $('.modal').on('hidden.bs.modal', function () {
   $(this).find('form').trigger('reset');
   $('.stepy-navigator').show();
@@ -572,16 +574,16 @@ $(document).ready(function () {
 }); // Show modal
 
 body.on('click', '.company-modal', function () {
-  var $company = $(this).data('company');
-  $('.company-modal-title').text($company['name']);
-  $('#company_id_modal').text($company['id']);
-  $('#company_name_modal').text($company['name']);
-  $('#company_code_modal').text($company['code']);
-  $('#company_field_modal').text($company['field']);
-  $('#company_address_modal').text($company['address']);
-  $('#company_email_modal').text($company['email']);
-  $('#company_phone_modal').text($company['phone']);
-  $('#company_status_modal').text($company['status']);
+  var company = $(this).data('company');
+  $('.company-modal-title').text(company['name']);
+  $('#company_id_modal').text(company['id']);
+  $('#company_name_modal').text(company['name']);
+  $('#company_code_modal').text(company['code']);
+  $('#company_field_modal').text(company['field']);
+  $('#company_address_modal').text(company['address']);
+  $('#company_email_modal').text(company['email']);
+  $('#company_phone_modal').text(company['phone']);
+  $('#company_status_modal').text(company['status']);
 });
 body.on('click', '.products-modal', function () {
   $('#products_modal').modal('show');
@@ -851,13 +853,15 @@ body.on('hidden.bs.modal', function () {
   $('.reload-page-button').hide(); // Single picker
 
   $('.daterange-single').daterangepicker({
-    singleDatePicker: true
+    singleDatePicker: true,
+    maxDate: new Date()
   }).val('');
   validate_form.resetForm();
 });
 $(document).ready(function () {
   $('.daterange-single').daterangepicker({
-    singleDatePicker: true
+    singleDatePicker: true,
+    maxDate: new Date()
   }).val('');
 }); // Loading...
 

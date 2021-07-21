@@ -1,4 +1,5 @@
 let body = $('body');
+base_path = $('#url').val();
 $('.modal').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset');
     $('.stepy-navigator').show();
@@ -53,16 +54,16 @@ $(document).ready(function () {
 
 // Show modal
 body.on('click', '.company-modal', function () {
-    let $company = $(this).data('company');
-    $('.company-modal-title').text($company['name']);
-    $('#company_id_modal').text($company['id']);
-    $('#company_name_modal').text($company['name']);
-    $('#company_code_modal').text($company['code']);
-    $('#company_field_modal').text($company['field']);
-    $('#company_address_modal').text($company['address']);
-    $('#company_email_modal').text($company['email']);
-    $('#company_phone_modal').text($company['phone']);
-    $('#company_status_modal').text($company['status']);
+    let company = $(this).data('company');
+    $('.company-modal-title').text(company['name']);
+    $('#company_id_modal').text(company['id']);
+    $('#company_name_modal').text(company['name']);
+    $('#company_code_modal').text(company['code']);
+    $('#company_field_modal').text(company['field']);
+    $('#company_address_modal').text(company['address']);
+    $('#company_email_modal').text(company['email']);
+    $('#company_phone_modal').text(company['phone']);
+    $('#company_status_modal').text(company['status']);
 })
 
 body.on('click', '.products-modal', function () {
@@ -346,6 +347,7 @@ body.on('hidden.bs.modal', function () {
     // Single picker
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
+        maxDate: new Date()
     }).val('');
     validate_form.resetForm();
 });
@@ -353,6 +355,7 @@ body.on('hidden.bs.modal', function () {
 $(document).ready(function () {
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
+        maxDate: new Date()
     }).val('');
 
 })

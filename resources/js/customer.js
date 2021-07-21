@@ -16,6 +16,7 @@ $("body").on('click', '.edit-customer-button', function () {
                 $('#edit_customer_name').val(response.name);
                 $('#edit_customer_birth').daterangepicker({
                     singleDatePicker: true,
+                    maxDate: new Date()
                 }).val(response.birth);
                 if (response.gender === "Nam") {
                     $("#edit_customer_gender_male").prop('checked', true);

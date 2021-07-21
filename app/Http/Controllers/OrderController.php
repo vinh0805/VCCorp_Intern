@@ -279,16 +279,21 @@ class OrderController extends Controller
                 }
                 try {
                     $allOrders = Order::query()
-                        ->where(['customer_id' => ['$in' => $customerIdArray]])
-                        ->orWhere(['company_id' => ['$in' => $companyIdArray]])
-                        ->orWhere('time', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('price', $search_value)
-                        ->orWhere('tax', $search_value)
-                        ->orWhere('total_price', $search_value)
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['customer_id' => ['$in' => $customerIdArray]],
+                                ['company_id' => ['$in' => $companyIdArray]],
+                                ['time' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['tax' => $search_value],
+                                ['total_price' => $search_value],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
                 } catch (Exception $e) {
@@ -386,16 +391,21 @@ class OrderController extends Controller
                 try {
                     $allOrders = Order::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where(['customer_id' => ['$in' => $customerIdArray]])
-                        ->orWhere(['company_id' => ['$in' => $companyIdArray]])
-                        ->orWhere('time', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('price',$search_value)
-                        ->orWhere('tax',$search_value)
-                        ->orWhere('total_price',$search_value)
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['customer_id' => ['$in' => $customerIdArray]],
+                                ['company_id' => ['$in' => $companyIdArray]],
+                                ['time' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['tax' => $search_value],
+                                ['total_price' => $search_value],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
 
@@ -407,7 +417,7 @@ class OrderController extends Controller
             } else {
                 $allOrders = Order::query()
                     ->where('user_id', 'all', [$currentUser->_id])
-                    ->where($search_field, 'like', '%' . $search_value . '%')
+                    ->where($search_field, 'regexp', '/' . $search_value . '/')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
@@ -610,7 +620,7 @@ class OrderController extends Controller
                 continue;
             }
 
-            if ($request['number'][$i] >= $product['remain']) {
+            if ($request['number'][$i] > $product['remain']) {
                 $error = 1;
                 break;
             }
@@ -627,7 +637,7 @@ class OrderController extends Controller
 
         if ($error) {
             $data = [
-                'message' => 'Thêm đơn hàng mới thất bại!\nSố lượng hàng tồn kho không đủ.',
+                'message' => 'Thêm đơn hàng mới thất bại! Số lượng hàng tồn kho không đủ.',
                 'success' => false
             ];
             return response()->json($data);
