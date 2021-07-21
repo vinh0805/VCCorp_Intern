@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Label;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -287,7 +288,6 @@ class UserController extends Controller
             ] : null,
             'gender' => @$request['gender'],
             'password' => @md5($request['password']),
-            'address' => @$request['address'],
             'phone' => isset($request['phone']) ? [
                 'encrypted' => Crypt::encrypt($request['phone']),
                 'hashed' => md5($request['phone'])
@@ -355,13 +355,23 @@ class UserController extends Controller
                 } else {
                     $admin = "-1";
                 }
+                try {
+                    $time = new Carbon($search_value);
+                } catch (Exception $e) {
+                    $time = null;
+                }
                 $allUsers = User::query()
-                    ->where('name', 'regexp', '/' . $search_value . '/i')
-                    ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
-                    ->orWhere('email.hashed', md5($search_value))
-                    ->orWhere('phone.hashed', md5($search_value))
-                    ->orWhere('status', $search_value)
-                    ->orWhere('super_admin', $admin)
+                    ->where([
+                        '$or' => [
+                            ['$text' => ['$search' => $search_value]],
+                            ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                            ['gender' => ['$regex' => $search_value, '$options' => 'i']],
+                            ['email.hashed' => md5($search_value)],
+                            ['phone.hashed' => md5($search_value)],
+                            ['created_at' => $time],
+                            ['updated_at' => $time]
+                        ]
+                    ])
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             } catch (Exception $e) {
@@ -454,7 +464,6 @@ class UserController extends Controller
         if (isset($request['password']) && $request['password']) {
             $user['password'] = md5($request['password']);
         }
-        $user['address'] = $request['address'];
         $user['phone'] = isset($request['phone']) ? [
             'encrypted' => Crypt::encrypt($request['phone']),
             'hashed' => md5($request['phone'])

@@ -501,7 +501,6 @@ class ProductController extends Controller
 
         $product['name'] = $request['name'];
         $product['code'] = $request['code'];
-        $product['address'] = $request['address'];
         $product['price'] = $request['price'];
         $product['remain'] = $request['remain'];
         $product['user_id'] = isset($request['users']) ? $request['users'] : [];

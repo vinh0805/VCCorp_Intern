@@ -628,7 +628,7 @@ class OrderController extends Controller
                 continue;
             }
 
-            if ($request['number'][$i] >= $product['remain']) {
+            if ($request['number'][$i] > $product['remain']) {
                 $error = 1;
                 break;
             }
@@ -645,7 +645,7 @@ class OrderController extends Controller
 
         if ($error) {
             $data = [
-                'message' => 'Thêm đơn hàng mới thất bại!\nSố lượng hàng tồn kho không đủ.',
+                'message' => 'Thêm đơn hàng mới thất bại! Số lượng hàng tồn kho không đủ.',
                 'success' => false
             ];
             return response()->json($data);
