@@ -206,6 +206,7 @@ class OrderController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'customer_id') {
                 $customers = Customer::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -222,6 +223,7 @@ class OrderController extends Controller
                 } else {
                     $allOrders = Order::query()->where('customer', '-1')->paginate(10);
                 }
+
             } elseif ($search_field == 'company_id') {
                 $companies = Company::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -239,8 +241,8 @@ class OrderController extends Controller
                     $allOrders = Order::query()
                         ->where('customer','-1')
                         ->paginate(10);
-
                 }
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -249,6 +251,7 @@ class OrderController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 $customers = Customer::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -279,16 +282,21 @@ class OrderController extends Controller
                 }
                 try {
                     $allOrders = Order::query()
-                        ->where(['customer_id' => ['$in' => $customerIdArray]])
-                        ->orWhere(['company_id' => ['$in' => $companyIdArray]])
-                        ->orWhere('time', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('price', $search_value)
-                        ->orWhere('tax', $search_value)
-                        ->orWhere('total_price', $search_value)
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['customer_id' => ['$in' => $customerIdArray]],
+                                ['company_id' => ['$in' => $companyIdArray]],
+                                ['time' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['tax' => $search_value],
+                                ['total_price' => $search_value],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
                 } catch (Exception $e) {
@@ -296,6 +304,7 @@ class OrderController extends Controller
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allOrders = Order::query()
                     ->where($search_field, 'regexp', '/' . $search_value . '/i')
@@ -312,6 +321,7 @@ class OrderController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'customer_id') {
                 $customers = Customer::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -329,6 +339,7 @@ class OrderController extends Controller
                 } else {
                     $allOrders = Order::query()->where('customer', '-1')->paginate(10);
                 }
+
             } elseif ($search_field == 'company_id') {
                 $companies = Company::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -346,6 +357,7 @@ class OrderController extends Controller
                 } else {
                     $allOrders = Order::query()->where('customer', '-1')->paginate(10);
                 }
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -355,6 +367,7 @@ class OrderController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 $customers = Customer::query()
                     ->where('name', 'regexp', '/' . $search_value . '/i')
@@ -386,28 +399,33 @@ class OrderController extends Controller
                 try {
                     $allOrders = Order::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where(['customer_id' => ['$in' => $customerIdArray]])
-                        ->orWhere(['company_id' => ['$in' => $companyIdArray]])
-                        ->orWhere('time', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('price',$search_value)
-                        ->orWhere('tax',$search_value)
-                        ->orWhere('total_price',$search_value)
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/')
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['customer_id' => ['$in' => $customerIdArray]],
+                                ['company_id' => ['$in' => $companyIdArray]],
+                                ['time' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['tax' => $search_value],
+                                ['total_price' => $search_value],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
-
                 } catch (Exception $e) {
                     $allOrders = Order::query()
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allOrders = Order::query()
                     ->where('user_id', 'all', [$currentUser->_id])
-                    ->where($search_field, 'like', '%' . $search_value . '%')
+                    ->where($search_field, 'regexp', '/' . $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
