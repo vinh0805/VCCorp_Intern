@@ -100,7 +100,12 @@
                             <tr>
                                 <td><input type="checkbox" class="styled check-one" data-id="{{$company->_id}}"></td>
                                 <td>{{ ($allCompanies->currentPage() - 1)*10 + $key + 1}}</td>
-                                <td>{{$company->name}}</td>
+                                <td>
+                                    <a href="javascript:void(0)" class="edit-company-button"
+                                       data-id="{{$company->_id}}">
+                                        {{$company->name}}
+                                    </a>
+                                </td>
                                 <td>{{$company->code}}</td>
                                 <td>{{$company->field}}</td>
                                 <td>{{$company->address}}</td>
@@ -286,7 +291,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close close-modal"><i class="fa fa-close"></i></button>
-                    <h5 class="modal-title">Thêm công ty mới</h5>
+                    <h5 class="modal-title">Sửa thông tin công ty</h5>
                 </div>
 
                 <form action="{{url('/company/edit')}}" data-changed="0"

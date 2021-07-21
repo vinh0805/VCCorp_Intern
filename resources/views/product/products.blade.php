@@ -94,7 +94,12 @@
                             <tr>
                                 <td><input type="checkbox" class="styled check-one" data-id="{{$product->_id}}"></td>
                                 <td>{{ ($allProducts->currentPage() - 1)*10 + $key + 1}}</td>
-                                <td>{{$product->name}}</td>
+                                <td>
+                                    <a href="#" class="edit-product-button"
+                                       data-id="{{$product->_id}}">
+                                        {{$product->name}}
+                                    </a>
+                                </td>
                                 <td>{{$product->code}}</td>
                                 <td>{{number_format($product->price)}}</td>
                                 <td>{{$product->remain}}</td>
@@ -283,7 +288,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close close-modal"><i class="fa fa-close"></i></button>
-                    <h5 class="modal-title">Thêm sản phẩm mới</h5>
+                    <h5 class="modal-title">Sửa thông tin sản phẩm</h5>
                 </div>
 
                 <form action="" class="form-horizontal validate-form2 edit-form" method="post"

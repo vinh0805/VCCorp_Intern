@@ -72,7 +72,12 @@
                             <tr>
                                 <td><input type="checkbox" class="styled check-one" data-id="{{$user->_id}}"></td>
                                 <td>{{ ($userList->currentPage() - 1)*10 + $key + 1}}</td>
-                                <td>{{$user->name}}</td>
+                                <td>
+                                    <a href="#"
+                                       class="admin-edit-user-button" data-id="{{$user->_id}}">
+                                        {{$user->name}}
+                                    </a>
+                                </td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->gender}}</td>
                                 <td>{{$user->phone}}</td>

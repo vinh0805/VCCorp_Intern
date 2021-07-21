@@ -110,7 +110,14 @@
                                     <td><input type="checkbox" class="styled check-one" data-id="{{$customer->_id}}">
                                     </td>
                                     <td>{{ ($allCustomers->currentPage() - 1)*10 + $key + 1}}</td>
-                                    <td>{{$customer->name}}</td>
+                                    <td>
+                                        <a href="#"
+                                           class="edit-customer-button check-form-change"
+                                           data-id="{{$customer->_id}}"
+                                           data-target="#edit_customer_modal">
+                                            {{$customer->name}}
+                                        </a>
+                                    </td>
                                     <td>{{$customer->birth}}</td>
                                     <td>{{$customer->gender}}</td>
                                     <td>{{$customer->job}}</td>
