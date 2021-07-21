@@ -347,12 +347,12 @@ class CompanyController extends Controller
 
         // Confirm if have duplicated record
         if (!$request['confirm']) {
-            if (isset($request['email'])) {
+            if (isset($request['email']) && $request['email']) {
                 $duplicatedEmailCompany = Company::query()
                     ->where('email.hashed', md5($request['email']))
                     ->first();
             }
-            if ($request['phone']) {
+            if (isset($request['phone']) && $request['phone']) {
                 $duplicatedPhoneCompany = Company::query()
                     ->where('phone.hashed', md5($request['phone']))
                     ->first();
@@ -393,10 +393,8 @@ class CompanyController extends Controller
                 'hashed' => md5(@$request['phone'])
             ],
             'user_id' => isset($request['users']) ? $request['users'] : [],
-            'status' => @$request['status'],
-            'created_at' => Carbon::now()->format('Y-m-d H-i-s')
+            'status' => @$request['status']
         ]);
-        $newCompany['created_at'] = Carbon::now()->format('Y-m-d H-i-s');
 
         if ($newCompany->save()) {
             $data = [
@@ -458,8 +456,7 @@ class CompanyController extends Controller
 
                 return response()->json($data);
             }
-        } catch (Exception $e) {
-        }
+        } catch (Exception $e) {}
 
         $data = [
             'message' => 'Xóa công ty thất bại! Dữ liệu không tồn tại.',

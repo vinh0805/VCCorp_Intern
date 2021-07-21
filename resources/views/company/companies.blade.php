@@ -242,7 +242,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Số điện thoại</label>
                             <div class="col-sm-9">
-                                <input type="text" placeholder="099 999 9999" data-mask="099 999 9999"
+                                <input type="text" placeholder="099 999 9999"
                                        class="form-control" name="phone">
                             </div>
                         </div>
@@ -344,7 +344,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Số điện thoại</label>
                             <div class="col-sm-9">
-                                <input type="text" placeholder="099 999 9999" data-mask="099 999 9999"
+                                <input type="text" placeholder="099 999 9999"
                                        class="form-control" name="phone" id="edit_company_phone">
                             </div>
                         </div>
