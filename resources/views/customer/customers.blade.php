@@ -137,8 +137,12 @@
                                             <span class="label label-default">{{$customer->status}}</span>
                                         @endif
                                     </td>
-                                    <td>{{$customer->created_at->format('Y-m-d h:i:s.u')}}</td>
-                                    <td>{{$customer->updated_at->format('Y-m-d h:i:s.u')}}</td>
+                                    <td title="{{$customer->created_at->format('Y-m-d h:i:s.u')}}">
+                                        {{$customer->created_at->format('Y-m-d h:i:s')}}
+                                    </td>
+                                    <td title="{{$customer->updated_at->format('Y-m-d h:i:s.u')}}">
+                                        {{$customer->updated_at->format('Y-m-d h:i:s')}}
+                                    </td>
 
                                     <td class="text-center">
                                         @if(isset($permissionList) &&

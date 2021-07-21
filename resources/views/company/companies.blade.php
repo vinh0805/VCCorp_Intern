@@ -119,8 +119,12 @@
                                         <span class="label label-default">{{$company->status}}</span>
                                     @endif
                                 </td>
-                                <td>{{$company->created_at->format('Y-m-d h:i:s.u')}}</td>
-                                <td>{{$company->updated_at->format('Y-m-d h:i:s.u')}}</td>
+                                <td title="{{$company->created_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$company->created_at->format('Y-m-d h:i:s')}}
+                                </td>
+                                <td title="{{$company->updated_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$company->updated_at->format('Y-m-d h:i:s')}}
+                                </td>
                                 <td class="text-center">
                                     @if(isset($permissionList) &&
                                         (in_array('update', $permissionList) || in_array('delete', $permissionList)))
