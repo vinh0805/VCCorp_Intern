@@ -117,8 +117,12 @@
                                         <span class="label label-default">{{$product->status}}</span>
                                     @endif
                                 </td>
-                                <td>{{$product->created_at->format('Y-m-d h:i:s.u')}}</td>
-                                <td>{{$product->updated_at->format('Y-m-d h:i:s.u')}}</td>
+                                <td title="{{$product->created_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$product->created_at->format('Y-m-d h:i:s')}}
+                                </td>
+                                <td title="{{$product->updated_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$product->updated_at->format('Y-m-d h:i:s')}}
+                                </td>
 
                                 <td class="text-center">
                                     @if(isset($permissionList) &&

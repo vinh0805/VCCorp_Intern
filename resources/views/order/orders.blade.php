@@ -138,8 +138,11 @@
                                         <span class="label label-default">{{$order->status}}</span>
                                     @endif
                                 </td>
-                                <td>{{$order->created_at->format('Y-m-d h:i:s.u')}}</td>
-                                <td>{{$order->updated_at->format('Y-m-d h:i:s.u')}}</td>
+                                <td title="{{$order->created_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$order->created_at->format('Y-m-d h:i:s')}}</td>
+                                <td title="{{$order->updated_at->format('Y-m-d h:i:s.u')}}">
+                                    {{$order->updated_at->format('Y-m-d h:i:s')}}
+                                </td>
                                 <td class="text-center">
                                     @if(isset($permissionList) &&
                                         (in_array('update', $permissionList) || in_array('delete', $permissionList)))
