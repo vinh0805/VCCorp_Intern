@@ -347,36 +347,7 @@ $("body").on('click', '.edit-customer-button', function () {
   });
 });
 $(".import-customer-button").click(function () {
-  $("#import_form").attr('action', '/customer/import'); // let base_path = $("#url").val();
-  // $(".file-uploader").pluploadQueue({
-  //     runtimes: 'html5, html4, Flash, Silverlight',
-  //     url: base_path + '/customer/import',
-  //     chunk_size: '5Mb',
-  //     unique_names: true,
-  //     multi_selection: false,
-  //     max_file_count: 1,
-  //     filters: {
-  //         max_file_size: '5Mb',
-  //         mime_types: [{
-  //             title: "Excel files",
-  //             extensions: "xlsx"
-  //         }]
-  //     },
-  //     resize: {
-  //         width: 320,
-  //         height: 240,
-  //         quality: 90
-  //     },
-  //     init: {
-  //         QueueChanged: function (uploader) {
-  //             if (uploader.files.length > 1) {
-  //                 uploader.files.splice(1, uploader.files.length);
-  //
-  //                 alert('You can not add more than one file!', {});
-  //             }
-  //         }// Initialize validation
-  //     }
-  // })
+  $("#import_form").attr('action', '/customer/import');
 });
 var a = $('.customer-table').DataTable({
   "scrollX": true,
@@ -388,126 +359,7 @@ var a = $('.customer-table').DataTable({
   "oLanguage": {
     "sEmptyTable": "Không có dữ liệu."
   }
-}); // $('.customer-table').DataTable();
-// $('.customer-table').DataTable({
-//     processing: true,
-//     serverSide: true,
-//     ajax: {
-//         url: 'customers/get-data',
-//         dataType: 'json',
-//         type: 'GET'
-//     },
-//     columns:[
-//         {
-//             data: 'id',
-//         },
-//         {
-//             data: 'name'
-//         },
-//         {
-//             data: 'age'
-//         },
-//         {
-//             data: 'gender',
-//             orderable: false
-//         },
-//         {
-//             data: 'job'
-//         },
-//         {
-//             data: 'address'
-//         },
-//         {
-//             data: 'email'
-//         },
-//         {
-//             data: 'phone'
-//         },
-//         {
-//             data: 'company',
-//             render: function (data, type, full, meta) {
-//                 if (data && data.name) {
-//                     return `<a href="javascript:void(0)" class="company-modal" data-company='` + JSON.stringify(data) + `'
-//                                data-toggle="modal"
-//                                data-target="#company_modal" data-title="` + data.name + `">` + data.name +
-//                             `</a>`;
-//                 }
-//                 return null;
-//             }
-//         },
-//         {
-//             data: 'user',
-//             orderable: false
-//         },
-//         {
-//             data: 'status',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (data && data === "Đang hoạt động") {
-//                     return '<span class="label label-success">' + data + '</span>';
-//                 } else if (data && data === "Không hoạt động") {
-//                     return '<span class="label label-default">' + data + '</span>';
-//                 } else {
-//                     return null;
-//                 }
-//             }
-//         },
-//         {
-//             data: 'option',
-//             orderable: false,
-//
-//             render: function (data, type, full, meta) {
-//                 if (!full.edit_permission && !full.delete_permission && !full.set_permission) {
-//                     return null;
-//                 }
-//
-//                 let url = $('#url').val();
-//                 let html = `<td class="text-center">
-//                                 <ul class="icons-list">
-//                                     <li class="dropdown">
-//                                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-//                                             <i class="icon-menu9"></i>
-//                                         </a>
-//
-//                                         <ul class="dropdown-menu dropdown-menu-right">`;
-//
-//                 if (full.edit_permission) {
-//                     html +=            `<li>
-//                                             <a href="javascript:void(0)" class="edit-customer-button" data-id="` + data + `">
-//                                                 <i class="icon-pencil"></i> Sửa thông tin
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.delete_permission) {
-//                     html +=            `<li>
-//                                             <a href="` + url + `/user/customer/delete/` + data + `"
-//                                             onclick="return confirm(\'Bạn có muốn xóa sản phẩm này không?\')">
-//                                                 <i class="icon-folder-remove"></i> Xóa
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.set_permission) {
-//                     html +=            `<li>
-//                                             <a href="#" class="set_permission_button" data-toggle="modal"
-//                                                data-target="#set_permission_modal" data-id="` + data + `">
-//                                                 <i class="icon-cog2"></i> Phân quyền
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 html +=             `</ul>
-//                                 </li>
-//                             </ul>
-//                         </td>`;
-//
-//                 return html;
-//             }
-//
-//         }
-//     ]
-// });
+});
 
 /***/ }),
 
@@ -1163,11 +1015,6 @@ $().ready(function () {
         maxlength: 50,
         regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
       },
-      // birth: {
-      //     number: true,
-      //     min: 1900,
-      //     max: 2021
-      // },
       tax: {
         number: true,
         min: 0,
@@ -1226,11 +1073,6 @@ $().ready(function () {
         maxlength: 50,
         regex: /^([a-zA-Z0-9ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i
       },
-      // birth: {
-      //     number: true,
-      //     min: 1900,
-      //     max: 2021
-      // },
       tax: {
         number: true,
         min: 0,
@@ -1553,68 +1395,7 @@ $(".add-product-order-button2").click(function () {
   $appendContent += "\n                    </select>\n                </div>\n            </div>\n            <div class=\"col-md-6\">\n                <label class=\"control-label col-sm-3\">S\u1ED1 l\u01B0\u1EE3ng</label>\n                <div class=\"col-sm-7\">\n                    <input type='number' class=\"form-control\" name=\"number[]\" min=\"1\" value=\"1\">\n                </div>\n                <div class=\"col-sm-2 text-right\">\n                    <button type=\"button\" onclick=\"document.getElementById('product" + $id + "').remove()\"\n                            class=\"btn btn-danger sub-product-order-button\">\n                        <i class=\"icon-subtract\"></i>\n                    </button>\n                </div>\n            </div>\n        </div>";
   $("#edit_product_list2").append($appendContent);
   $("select.select-search").select2();
-}); // $(".import-order-button").click(function () {
-//     $("#import_form").attr('action', 'order/import');
-//
-//     $("#import_form_fields_list").html(`
-//         <div class="col-sm-1">
-//             <h5>ID</h5>
-//             <input type="checkbox" id="field_id" name="field_id">
-//             <label for="field_id">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Customer_id</h5>
-//             <input type="checkbox" id="field_customer_id" name="field_customer_id">
-//             <label for="field_customer_id">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Company_id</h5>
-//             <input type="checkbox" id="field_company_id" name="field_company_id">
-//             <label for="field_company_id">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Sản phẩm</h5>
-//             <input type="checkbox" id="field_products" name="field_products">
-//             <label for="field_products">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Giá</h5>
-//             <input type="checkbox" id="field_price" name="field_price">
-//             <label for="field_price">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Thuế</h5>
-//             <input type="checkbox" id="field_tax" name="field_tax">
-//             <label for="field_tax">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Tổng giá</h5>
-//             <input type="checkbox" id="field_total_price" name="field_total_price">
-//             <label for="field_total_price">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Thời gian</h5>
-//             <input type="checkbox" id="field_time" name="field_time">
-//             <label for="field_time">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Địa chỉ</h5>
-//             <input type="checkbox" id="field_address" name="field_address">
-//             <label for="field_address">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>User</h5>
-//             <input type="checkbox" id="field_user_id" name="field_user_id">
-//             <label for="field_user_id">Check trùng</label>
-//         </div>
-//         <div class="col-sm-1">
-//             <h5>Status</h5>
-//             <input type="checkbox" id="field_status" name="field_status">
-//             <label for="field_status">Check trùng</label>
-//         </div>
-//     `)
-// })
-
+});
 $('.order-table').dataTable({
   "scrollX": true,
   "scrollY": "calc(100vh - 325px)",
@@ -1626,145 +1407,7 @@ $('.order-table').dataTable({
   },
   searching: false,
   "order": []
-}); // $('.order-table').DataTable({
-//     processing: true,
-//     serverSide: true,
-//     ajax: {
-//         url: 'orders/get-data',
-//         dataType: 'json',
-//         type: 'GET'
-//     },
-//     columns:[
-//         {
-//             data: 'id',
-//         },
-//         {
-//             data: 'customer',
-//             render: function (data, type, full, meta) {
-//                 if (data && data.name) {
-//                     return `<a href="javascript:void(0)" class="customer-modal" data-customer='` + JSON.stringify(data) + `'
-//                                data-toggle="modal"
-//                                data-target="#customer_modal" data-title="` + data.name + `">` + data.name +
-//                         `</a>`;
-//                 }
-//                 return null;
-//             }
-//
-//         },
-//         {
-//             data: 'company',
-//             render: function (data, type, full, meta) {
-//                 if (data && data.name) {
-//                     return `<a href="javascript:void(0)" class="company-modal" data-company='` + JSON.stringify(data) + `'
-//                                data-toggle="modal"
-//                                data-target="#company_modal" data-title="` + data.name + `">` + data.name +
-//                         `</a>`;
-//                 }
-//                 return null;
-//             }
-//         },
-//         {
-//             data: 'products',
-//             render: function (data, type, full, meta) {
-//                 if (data) {
-//                     return `<a href="javascript:void(0)" class="products-modal" data-id="` + full._id + `">` + data.length +
-//                         ` sản phẩm</a>`;
-//                 }
-//                 return null;
-//             }
-//         },
-//         {
-//             data: 'price',
-//             render: function (data, type, full, meta) {
-//                 return new Intl.NumberFormat().format(data);
-//             }
-//         },
-//         {
-//             data: 'tax'
-//         },
-//         {
-//             data: 'total_price',
-//             render: function (data, type, full, meta) {
-//                 return new Intl.NumberFormat().format(data);
-//             }
-//         },
-//         {
-//             data: 'time'
-//         },
-//         {
-//             data: 'address'
-//         },
-//         {
-//             data: 'user',
-//             orderable: false
-//         },
-//         {
-//             data: 'status',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (data && data === "Đã hoàn thành") {
-//                     return '<span class="label label-success">' + data + '</span>';
-//                 } else if (data && data === "Chưa hoàn thành") {
-//                     return '<span class="label label-default">' + data + '</span>';
-//                 } else {
-//                     return null;
-//                 }
-//             }
-//         },
-//         {
-//             data: 'option',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (!full.edit_permission && !full.delete_permission && !full.set_permission) {
-//                     return null;
-//                 }
-//
-//                 let url = $('#url').val();
-//                 let html = `<td class="text-center">
-//                                 <ul class="icons-list">
-//                                     <li class="dropdown">
-//                                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-//                                             <i class="icon-menu9"></i>
-//                                         </a>
-//
-//                                         <ul class="dropdown-menu dropdown-menu-right">`;
-//
-//                 if (full.edit_permission) {
-//                     html +=            `<li>
-//                                             <a href="javascript:void(0)" class="edit-order-button" data-id="` + data + `">
-//                                                 <i class="icon-pencil"></i> Sửa thông tin
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.delete_permission) {
-//                     html +=            `<li>
-//                                             <a href="` + url + `/user/order/delete/` + data + `"
-//                                             onclick="return confirm(\'Bạn có muốn xóa sản phẩm này không?\')">
-//                                                 <i class="icon-folder-remove"></i> Xóa
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.set_permission) {
-//                     html +=            `<li>
-//                                             <a href="#" class="set_permission_button" data-toggle="modal"
-//                                                data-target="#set_permission_modal" data-id="` + data + `">
-//                                                 <i class="icon-cog2"></i> Phân quyền
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 html +=             `</ul>
-//                                 </li>
-//                             </ul>
-//                         </td>`;
-//
-//                 return html;
-//             }
-//         }
-//     ]
-// });
+});
 
 /***/ }),
 
@@ -1835,116 +1478,7 @@ var product_table = $('.product-table').DataTable({
 product_table.columns.adjust();
 $(".sidebar-main-toggle").click(function () {
   product_table.columns.adjust();
-}); // $('.product-table').DataTable({
-//     processing: true,
-//     serverSide: true,
-//     ajax: {
-//         url: 'products/get-data',
-//         dataType: 'json',
-//         type: 'GET'
-//     },
-//     columns:[
-//         {
-//             data: 'id',
-//         },
-//         {
-//             data: 'name',
-//             orderable: false
-//         },
-//         {
-//             data: 'code',
-//             orderable: false
-//         },
-//         {
-//             data: 'price',
-//             render: function (data, type, full, meta) {
-//                 return new Intl.NumberFormat().format(data);
-//             }
-//         },
-//         {
-//             data: 'remain'
-//         },
-//         {
-//             data: 'image',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (data) {
-//                     let url = $('#url').val();
-//                     return  "<img src='" + url + "/storage/images/" + data + "' class='product-image'/>";
-//                 } else return null;
-//             }
-//         },
-//         {
-//             data: 'user',
-//             orderable: false
-//         },
-//         {
-//             data: 'status',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (data && data === "Có sẵn") {
-//                     return '<span class="label label-success">' + data + '</span>';
-//                 } else if (data && data === "Không có sẵn") {
-//                     return '<span class="label label-default">' + data + '</span>';
-//                 } else {
-//                     return null;
-//                 }
-//             }
-//         },
-//         {
-//             data: 'option',
-//             orderable: false,
-//             render: function (data, type, full, meta) {
-//                 if (!full.edit_permission && !full.delete_permission && !full.set_permission) {
-//                     return null;
-//                 }
-//
-//                 let url = $('#url').val();
-//                 let html = `<td class="text-center">
-//                                 <ul class="icons-list">
-//                                     <li class="dropdown">
-//                                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-//                                             <i class="icon-menu9"></i>
-//                                         </a>
-//
-//                                         <ul class="dropdown-menu dropdown-menu-right">`;
-//
-//                 if (full.edit_permission) {
-//                     html +=            `<li>
-//                                             <a href="javascript:void(0)" class="edit-product-button" data-id="` + data + `">
-//                                                 <i class="icon-pencil"></i> Sửa thông tin
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.delete_permission) {
-//                     html +=            `<li>
-//                                             <a href="` + url + `/user/product/delete/` + data + `"
-//                                             onclick="return confirm(\'Bạn có muốn xóa sản phẩm này không?\')">
-//                                                 <i class="icon-folder-remove"></i> Xóa
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 if (full.set_permission) {
-//                     html +=            `<li>
-//                                             <a href="#" class="set_permission_button" data-toggle="modal"
-//                                                data-target="#set_permission_modal" data-id="` + data + `">
-//                                                 <i class="icon-cog2"></i> Phân quyền
-//                                             </a>
-//                                         </li>`;
-//                 }
-//
-//                 html +=             `</ul>
-//                                 </li>
-//                             </ul>
-//                         </td>`;
-//
-//                 return html;
-//             }
-//         }
-//     ]
-// });
+});
 
 /***/ }),
 

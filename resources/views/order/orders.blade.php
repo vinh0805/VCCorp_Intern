@@ -19,21 +19,6 @@
                                     </a>
                                 </li>
                             @endif
-                            {{--                            @if(isset($permissionList) && in_array('import', $permissionList))--}}
-                            {{--                                <li>--}}
-                            {{--                                    <a href="#" data-toggle="modal" data-target="#import_modal"--}}
-                            {{--                                       class="import-order-button">--}}
-                            {{--                                        <i class="icon-import"></i>--}}
-                            {{--                                    </a>--}}
-                            {{--                                </li>--}}
-                            {{--                            @endif--}}
-                            {{--                            @if(isset($permissionList) && (in_array('export', $permissionList) || in_array('export_all', $permissionList)))--}}
-                            {{--                                <li>--}}
-                            {{--                                    <a href="javascript:void(0)" class="export-button" data-collection="order">--}}
-                            {{--                                        <i class="icon-database-export"></i>--}}
-                            {{--                                    </a>--}}
-                            {{--                                </li>--}}
-                            {{--                            @endif--}}
                             @if(isset($permissionList) && (in_array('delete', $permissionList) || in_array('delete_all', $permissionList)))
                                 <li>
                                     <a href="javascript:void(0)" class="delete-all-button" data-collection="order">
