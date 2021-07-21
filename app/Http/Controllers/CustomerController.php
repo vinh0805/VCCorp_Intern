@@ -411,12 +411,12 @@ class CustomerController extends Controller
 
         // Confirm if have duplicated record
         if (!$request['confirm']) {
-            if (isset($request['email'])) {
+            if (isset($request['email']) && $request['email']) {
                 $duplicatedEmailCustomer = Customer::query()
                     ->where('email.hashed', md5($request['email']))
                     ->first();
             }
-            if ($request['phone']) {
+            if (isset($request['phone']) && $request['phone']) {
                 $duplicatedPhoneCustomer = Customer::query()
                     ->where('phone.hashed', md5($request['phone']))
                     ->first();
@@ -658,13 +658,13 @@ class CustomerController extends Controller
 
         // Confirm if have duplicated record
         if (!$request['confirm']) {
-            if (isset($request['email'])) {
+            if (isset($request['email']) && $request['email']) {
                 $duplicatedEmailCustomer = Customer::query()
                     ->where('email.hashed', md5($request['email']))
                     ->where('_id', '!=', $customer['_id'])
                     ->first();
             }
-            if ($request['phone']) {
+            if (isset($request['phone']) && $request['phone']) {
                 $duplicatedPhoneCustomer = Customer::query()
                     ->where('phone.hashed', md5($request['phone']))
                     ->where('_id', '!=', $customer['_id'])
