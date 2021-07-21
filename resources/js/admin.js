@@ -33,9 +33,10 @@ $(".admin-edit-user-button").click(function () {
             $('#edit_user_role_company').select2("val", response.role_id.company);
             $('#edit_user_role_product').select2("val", response.role_id.product);
 
-            edit_form.data('changed', 0);
-            $("form :input").change(function () {
-                $(this).closest('form').data('changed', 1);
+            old_state_form = new_state_form = edit_form.serialize();
+
+            edit_form.change(function () {
+                new_state_form = $(this).closest('form').serialize();
             });
 
         }

@@ -346,6 +346,7 @@ body.on('hidden.bs.modal', function () {
     // Single picker
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
+        maxDate: new Date()
     }).val('');
     validate_form.resetForm();
 });
@@ -353,6 +354,7 @@ body.on('hidden.bs.modal', function () {
 $(document).ready(function () {
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
+        maxDate: new Date()
     }).val('');
 
 })

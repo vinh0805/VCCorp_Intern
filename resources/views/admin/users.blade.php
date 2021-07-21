@@ -113,7 +113,7 @@
                                                 </li>
                                                 <li>
                                                     <button type="submit" class="delete-button text-left"
-                                                            data-id="{{$user->_id}}" data-collection="user">
+                                                            data-id="{{$user->_id}}" data-collection="admin/user">
                                                         <i class="icon-folder-remove"></i> Xóa
                                                     </button>
                                                 </li>

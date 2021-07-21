@@ -149,9 +149,9 @@ $(".admin-edit-user-button").click(function () {
       $('#edit_user_role_order').select2("val", response.role_id.order);
       $('#edit_user_role_company').select2("val", response.role_id.company);
       $('#edit_user_role_product').select2("val", response.role_id.product);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -258,9 +258,9 @@ $("body").on('click', '.edit-company-button', function () {
       }
 
       $('#edit_company_status').select2("val", response.status);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -319,7 +319,8 @@ $("body").on('click', '.edit-customer-button', function () {
         edit_form.attr('action', url2);
         $('#edit_customer_name').val(response.name);
         $('#edit_customer_birth').daterangepicker({
-          singleDatePicker: true
+          singleDatePicker: true,
+          maxDate: new Date()
         }).val(response.birth);
 
         if (response.gender === "Nam") {
@@ -851,13 +852,15 @@ body.on('hidden.bs.modal', function () {
   $('.reload-page-button').hide(); // Single picker
 
   $('.daterange-single').daterangepicker({
-    singleDatePicker: true
+    singleDatePicker: true,
+    maxDate: new Date()
   }).val('');
   validate_form.resetForm();
 });
 $(document).ready(function () {
   $('.daterange-single').daterangepicker({
-    singleDatePicker: true
+    singleDatePicker: true,
+    maxDate: new Date()
   }).val('');
 }); // Loading...
 
@@ -1511,9 +1514,9 @@ $("body").on('click', '.edit-order-button', function () {
         }
 
         $("select.select-search").select2();
-        edit_form.data('changed', 0);
-        $("form :input").change(function () {
-          $(this).closest('form').data('changed', 1);
+        old_state_form = new_state_form = edit_form.serialize();
+        edit_form.change(function () {
+          new_state_form = $(this).closest('form').serialize();
         });
       } else {
         $("#edit_product_list2").html("");
@@ -1796,9 +1799,9 @@ $("body").on('click', ".edit-product-button", function () {
       $('#edit_product_image').prop('placeholder', response.image);
       $('#edit_product_user').select2("val", response.user_id);
       $('#edit_product_status').select2("val", response.status);
-      edit_form.data('changed', 0);
-      $("form :input").change(function () {
-        $(this).closest('form').data('changed', 1);
+      old_state_form = new_state_form = edit_form.serialize();
+      edit_form.change(function () {
+        new_state_form = $(this).closest('form').serialize();
       });
     }
   });
@@ -1981,8 +1984,9 @@ $("body").on('click', '.edit-role-button', function () {
         alert(response.message);
       } else {
         var url = 'role/save/' + response._id;
-        $('#edit_role_form').attr('action', url);
-        $('#edit_role_name').val(response.name);
+        var edit_form = $('#edit_role_form');
+        edit_form.attr('action', url);
+        edit_form.val(response.name);
         $('.edit-permission').each(function () {
           if (response.permission_list.includes($(this).data('role'))) {
             $(this).prop('checked', true);
@@ -1991,6 +1995,10 @@ $("body").on('click', '.edit-role-button', function () {
           $(".styled").uniform({
             radioClass: 'choice'
           });
+        });
+        old_state_form = new_state_form = edit_form.serialize();
+        edit_form.change(function () {
+          new_state_form = $(this).closest('form').serialize();
         });
       }
     }

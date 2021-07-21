@@ -20,7 +20,7 @@
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#add_role_modal">
+                                <a href="#" data-toggle="modal" data-target="#add_role_modal" class="check-form-change">
                                     Thêm nhóm quyền
                                     <i class="icon-add"></i>
                                 </a>
