@@ -823,7 +823,6 @@ class CompanyController extends Controller
                 'success' => true,
                 'number' => count($dataArray),
                 'path' => url('/storage/' . $file_name)
-//                'path' => url(storage_path() . '/app/public/' . $file_name)
             ];
         } else {
             return [

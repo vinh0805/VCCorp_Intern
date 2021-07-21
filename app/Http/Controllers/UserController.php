@@ -369,7 +369,8 @@ class UserController extends Controller
                             ['email.hashed' => md5($search_value)],
                             ['phone.hashed' => md5($search_value)],
                             ['created_at' => $time],
-                            ['updated_at' => $time]
+                            ['updated_at' => $time],
+                            ['super_admin' => $admin]
                         ]
                     ])
                     ->orderBy('id', 'desc')
@@ -460,7 +461,6 @@ class UserController extends Controller
 
         $user['name'] = $request['name'];
         $user['gender'] = $request['gender'];
-        $user['email'] = $user['email'];
         if (isset($request['password']) && $request['password']) {
             $user['password'] = md5($request['password']);
         }
