@@ -121,6 +121,7 @@ class ProductController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -129,6 +130,7 @@ class ProductController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -137,13 +139,18 @@ class ProductController extends Controller
                 }
                 try {
                     $allProducts = Product::query()
-                        ->where('name', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('price', $search_value)
-                        ->orWhere('remain', $search_value)
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['code' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['remain' => $search_value],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
 
@@ -152,6 +159,7 @@ class ProductController extends Controller
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allProducts = Product::query()
                     ->where($search_field, 'regexp', '/'. $search_value . '/i')
@@ -168,6 +176,7 @@ class ProductController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -177,6 +186,7 @@ class ProductController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -186,13 +196,18 @@ class ProductController extends Controller
                 try {
                     $allProducts = Product::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('price', $search_value)
-                        ->orWhere('remain', $search_value)
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['code' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['price' => $search_value],
+                                ['remain' => $search_value],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
 
@@ -201,6 +216,7 @@ class ProductController extends Controller
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allProducts = Product::query()
                     ->where('user_id', 'all', [$currentUser->_id])

@@ -131,6 +131,7 @@ class CompanyController extends Controller
                     ->orWhere($search_field . '.hashed', md5($search_value))
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -139,6 +140,7 @@ class CompanyController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -147,23 +149,27 @@ class CompanyController extends Controller
                 }
                 try {
                     $allCompanies = Company::query()
-                        ->where('name', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('field', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('email.hashed', '=', md5($search_value))
-                        ->orWhere('phone.hashed', '=', md5($search_value))
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
-                        ->orderBy('id', 'desc')
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['code' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['field' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['email.hashed' => md5($search_value)],
+                                ['phone.hashed' => md5($search_value)],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])                        ->orderBy('id', 'desc')
                         ->paginate(10);
-
                 } catch (Exception $e) {
                     $allCompanies = Company::query()
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allCompanies = Company::query()
                     ->where($search_field, 'regexp', '/'. $search_value . '/i')
@@ -181,6 +187,7 @@ class CompanyController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
@@ -190,6 +197,7 @@ class CompanyController extends Controller
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -199,23 +207,28 @@ class CompanyController extends Controller
                 try {
                     $allCompanies = Company::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('code', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('address', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('field', 'regexp', '/'. $search_value . '/i')
-                        ->orWhere('email.hashed', '=', md5($search_value))
-                        ->orWhere('phone.hashed', '=', md5($search_value))
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['code' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['field' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['email.hashed' => md5($search_value)],
+                                ['phone.hashed' => md5($search_value)],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
-
                 } catch (Exception $e) {
                     $allCompanies = Company::query()
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allCompanies = Company::query()
                     ->where('user_id', 'all', [$currentUser->_id])

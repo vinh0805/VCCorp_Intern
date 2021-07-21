@@ -161,15 +161,16 @@ class CustomerController extends Controller
                     ->orWhere($search_field . '.hashed', md5($search_value))
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
-                } catch (Exception $e) {
-                }
+                } catch (Exception $e) {}
                 $allCustomers = Customer::query()
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -178,16 +179,21 @@ class CustomerController extends Controller
                 }
                 try {
                     $allCustomers = Customer::query()
-                        ->where('name', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('birth', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('job', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('address', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('email.hashed', '=', md5($search_value))
-                        ->orWhere('phone.hashed', '=', md5($search_value))
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['birth' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['gender' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['job' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['email.hashed' => md5($search_value)],
+                                ['phone.hashed' => md5($search_value)],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
 
@@ -196,6 +202,7 @@ class CustomerController extends Controller
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allCustomers = Customer::query()
                     ->where($search_field, 'regexp', '/' . $search_value . '/i')
@@ -206,24 +213,24 @@ class CustomerController extends Controller
             if (in_array($search_field, $this->encryptedFields)) {
                 try {
                     $search_value = $search_field == 'id' ? $search_value + 0 : $search_value;
-                } catch (Exception $e) {
-                }
+                } catch (Exception $e) {}
                 $allCustomers = Customer::query()
                     ->where('user_id', 'all', [$currentUser->_id])
                     ->where($search_field, $search_value)
                     ->orWhere($search_field . '.hashed', md5($search_value))
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == 'created_at' || $search_field == 'updated_at') {
                 try {
                     $search_value = new Carbon($search_value);
-                } catch (Exception $e) {
-                }
+                } catch (Exception $e) {}
                 $allCustomers = Customer::query()
                     ->where('user_id', 'all', [$currentUser->_id])
                     ->where($search_field, $search_value)
                     ->orderBy('id', 'desc')
                     ->paginate(10);
+
             } elseif ($search_field == null) {
                 try {
                     $time = new Carbon($search_value);
@@ -233,28 +240,33 @@ class CustomerController extends Controller
                 try {
                     $allCustomers = Customer::query()
                         ->where('user_id', 'all', [$currentUser->_id])
-                        ->where('name', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('birth', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('gender', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('job', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('address', 'regexp', '/' . $search_value . '/i')
-                        ->orWhere('email.hashed', '=', md5($search_value))
-                        ->orWhere('phone.hashed', '=', md5($search_value))
-                        ->orWhere('created_at', $time)
-                        ->orWhere('updated_at', $time)
-                        ->orWhere('status', $search_value)
+                        ->where([
+                            '$or' => [
+                                ['$text' => ['$search' => $search_value]],
+                                ['name' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['birth' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['gender' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['job' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['address' => ['$regex' => $search_value, '$options' => 'i']],
+                                ['email.hashed' => md5($search_value)],
+                                ['phone.hashed' => md5($search_value)],
+                                ['created_at' => $time],
+                                ['updated_at' => $time],
+                                ['status' => $search_value]
+                            ]
+                        ])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
-
                 } catch (Exception $e) {
                     $allCustomers = Customer::query()
                         ->where('id', '-1')
                         ->paginate(10);
                 }
+
             } else {
                 $allCustomers = Customer::query()
                     ->where('user_id', 'all', [$currentUser->_id])
-                    ->where($search_field, 'like', '%' . $search_value . '%')
+                    ->where($search_field, 'regexp', '/' . $search_value . '/i')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
             }
